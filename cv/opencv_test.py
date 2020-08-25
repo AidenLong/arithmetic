@@ -2,10 +2,10 @@
 
 import cv2
 
-img = cv2.imread('20200809232806990.jpg')
+img = cv2.imread('2-source.jpg')
 
 img_copy = img
-for _ in range(2):
+for _ in range(3):
     # 降低分辨率
     img_copy = cv2.pyrDown(img_copy)
 for _ in range(5):
@@ -24,6 +24,9 @@ img_edge = cv2.adaptiveThreshold(img_blur, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
 img_edge = cv2.cvtColor(img_edge, cv2.COLOR_GRAY2BGR)
 
 img_cartoon = cv2.bitwise_and(img_copy, img_edge)
-cv2.imshow("cartoon", img_cartoon)
+# 保存
+cv2.imwrite('2.jpg', img_cartoon)
+# 展示
+# cv2.imshow("cartoon", img_cartoon)
 cv2.waitKey(0)
-cv2.destroyAllWindows()
+# cv2.destroyAllWindows()
